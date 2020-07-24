@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinFacebook</title>
+    <title>OdinBook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,16 @@
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+    <% if signed_in? %>
+       <p> Signed in as <%= current_user.first_name %></p>
+    <% end %>
+
     <%= yield %>
+
+    <% if signed_in? %>
+      <p><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+      <% end %>
   </body>
 </html>
