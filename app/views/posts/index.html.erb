@@ -14,7 +14,7 @@
       <tr>
         <div class="post">
           <p><%= post.post %></p>
-          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Show(will change to comment later)', post %></td>
           <% if post.user_id == current_user.id %>
             <td><%= link_to 'Edit', edit_post_path(post) %></td>
             <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,4 +27,5 @@
 
 <br>
 
+<%= link_to 'Find Friends', users_path %>
 <%= link_to 'New Post', new_post_path %>
