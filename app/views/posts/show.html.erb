@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @post.post %></p>
+<div class="post">
+  <div class="post-content">
+    <p><%= @post.post %></p>
+    <p><%= "- #{@post.user.first_name} #{@post.user.last_name} -"%></p>
+  </div><br>
 <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
 <% if pre_like %>
   <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
@@ -8,6 +12,12 @@
   <%= button_to 'Like', post_likes_path(@post), method: :post %>
 <% end %>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<%= @post.comments.count %> <%= (@post.comments.count) == 1 ? 'Comment' : 'Comments'%></p>
+
+<% @post.posted_feedback.each do |comment| %>
+    <p class="comments"><%= comment %></p>
+<% end %>
+</div>
 
 <% if @post.user_id == current_user.id %>
 <%= link_to 'Edit', edit_post_path(@post) %>
