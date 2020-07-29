@@ -12,14 +12,30 @@
   <body>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-    <% if signed_in? %>
-       <p> Signed in as <%= current_user.first_name %></p>
-    <% end %>
 
-    <%= yield %>
+       <header class='clearfix'>
+        <div class="left-nav">
+          <ul>
+            <li><%= link_to "Odinbook", posts_path %></li>
+          </ul>
+        </div>
+        <div class="right-nav">
+          <ul>
+            <li><%= link_to "Friends", friendships_path %></li>
+            <li><%= link_to "#{current_user.first_name}", friendships_path %>
+              <% if current_user.friend_requests.count > 0 %>
+                <li><%=link_to "#{current_user.friend_requests.count} Friend Requests", friendships_path, method: :get %></li>
+              <% end %>
+          </ul>
+        </div>
+</header>
+
+    <div class='content'>
+      <%= yield %>
+    </div>
 
     <% if signed_in? %>
-      <p><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+      <p><%= button_to "Logout", destroy_user_session_path, method: :delete %></p>
       <% end %>
   </body>
 </html>

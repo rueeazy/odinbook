@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Community Posts</h1>
+
+<div>
+<p>
+  <%= "What's on your mind #{current_user.first_name}?"%><br>
+</p>
+<%= button_to 'New Post', new_post_path, method: :get %>
+</div>
+<br>
 
 <table>
   <thead>
@@ -14,18 +22,15 @@
       <tr>
         <div class="post">
           <p><%= post.post %></p>
-          <td><%= link_to 'Show(will change to comment later)', post %></td>
+          <p><%= "- #{post.user.first_name} #{post.user.last_name}"%></p>
+          <%= button_to 'Comment', post %>
           <% if post.user_id == current_user.id %>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%= link_to 'Edit |', edit_post_path(post) %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </div>
-      </tr>
+      </tr><br>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Find Friends', users_path %>
-<%= link_to 'New Post', new_post_path %>

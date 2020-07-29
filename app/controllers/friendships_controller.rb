@@ -11,6 +11,13 @@ class FriendshipsController < ApplicationController
         end
     end
 
+    def update
+        @user = User.find_by(id: params[:id])
+        current_user.confirm_friend(@user)
+        flash[:notice] = "Friend Request Accepted!"
+        redirect_to friendships_path
+    end
+
     private
 
     def friend_params

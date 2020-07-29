@@ -1,0 +1,21 @@
+<h1>Friends</h1>
+<% if current_user.friend_requests.count > 0 %>
+    <h4>Friend Requests</h4>
+    <% current_user.friend_requests.each do |request| %>
+        <%= request.first_name %>
+        <%= request.last_name %>
+        <%= link_to "Accept", friendship_path(request), method: :patch%>
+    <% end %>
+<% end %>
+
+<h4>Friends</h4>
+<% current_user.friends.each do |friend| %>
+  <div class="user">
+    <p>
+      <%= friend.first_name %>
+      <%= friend.last_name %>
+    </p>
+  </div>
+  <% end %>
+
+  <%= link_to "Find Friends", users_path, method: :get %>
