@@ -12,7 +12,6 @@
   <body>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
        <header class='clearfix'>
         <div class="left-nav">
           <ul>
@@ -32,10 +31,11 @@
 
     <div class='content'>
       <%= yield %>
-    </div>
 
-    <% if signed_in? %>
+      <% if signed_in? %>
       <p><%= button_to "Logout", destroy_user_session_path, method: :delete %></p>
       <% end %>
+    </div>
+
   </body>
 </html>

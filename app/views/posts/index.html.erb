@@ -24,9 +24,16 @@
           <p><%= post.post %></p>
           <p><%= "- #{post.user.first_name} #{post.user.last_name}"%></p>
           <%= button_to 'Comment', post %>
+          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+          <% else %>
+            <%= button_to 'Like', post_likes_path(post), method: :post %>
+          <% end %>
+          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
           <% if post.user_id == current_user.id %>
             <%= link_to 'Edit |', edit_post_path(post) %>
-            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </div>
       </tr><br>
