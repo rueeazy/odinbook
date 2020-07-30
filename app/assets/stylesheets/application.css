@@ -88,3 +88,7 @@
     border-style: groove;
     border-radius: 15px;
   }
+
+  img.rounded-circle {
+    border-radius: 50%;
+  }

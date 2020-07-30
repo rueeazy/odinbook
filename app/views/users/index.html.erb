@@ -3,6 +3,7 @@
   <% next if user == current_user %>
   <div class="user">
     <p>
+      <%= image_tag user_avatar(user, 30), class: "rounded-circle" %>
       <%= user.first_name %>
       <%= user.last_name %>
       <% if !current_user.friend?(user) %>

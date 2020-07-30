@@ -12,6 +12,7 @@
 <% current_user.friends.each do |friend| %>
   <div class="user">
     <p>
+      <%= image_tag user_avatar(friend, 20), class: "rounded-circle" %>
       <%= friend.first_name %>
       <%= friend.last_name %>
     </p>

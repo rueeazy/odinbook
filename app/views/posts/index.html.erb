@@ -3,6 +3,7 @@
 <h1>Community Posts</h1>
 
 <div>
+<%= image_tag user_avatar(current_user, 100), class: "rounded-circle" %>
 <p>
   <%= "What's on your mind #{current_user.first_name}?"%><br>
 </p>
@@ -23,6 +24,7 @@
         <div class="post">
           <div class ="post-content"
             <% next if !current_user.friend?(post.user) %>
+              <p><%= image_tag user_avatar(post.user, 20), class: "rounded-circle" %></p>
               <p><%= post.post %></p>
               <p><%= "- #{post.user.first_name} #{post.user.last_name} -"%></p>
           </div><br>

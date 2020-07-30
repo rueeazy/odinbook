@@ -1,2 +1,6 @@
+<%= image_tag user_avatar(current_user, 100), class: "rounded-circle" %>
 <h1><%= @user.first_name %></h1>
 <h5><%= @user.email%></h5>
+
+
+<%= button_to "Edit Profile", edit_user_registration_path, method: :get %>

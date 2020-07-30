@@ -23,9 +23,10 @@
           <% if signed_in? %>
             <li><%= link_to "Friends", friendships_path %></li>
             <li><%= link_to "#{current_user.first_name}", user_path(current_user) %>
-              <% if current_user.friend_requests.count > 0 %>
-                <li><%=link_to "#{current_user.friend_requests.count} Friend Requests", friendships_path, method: :get %></li>
-              <% end %>
+            <% if current_user.friend_requests.count > 0 %>
+            <li><%=link_to "#{current_user.friend_requests.count} Friend Requests", friendships_path, method: :get %></li>
+            <% end %>
+            <li><%= image_tag user_avatar(current_user, 30), class: "rounded-circle" %>
           <% end %>
           </ul>
         </div>
