@@ -24,6 +24,8 @@ gem 'devise'
 # bulma CSS
 gem 'bulma-rails', '~> 0.0.4.1'
 # Use Active Model has_secure_password
+#gravatar
+gem 'gravatar_image_tag', '~> 1.2'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant

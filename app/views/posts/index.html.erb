@@ -22,8 +22,9 @@
       <tr>
         <div class="post">
           <div class ="post-content"
-            <p><%= post.post %></p>
-            <p><%= "- #{post.user.first_name} #{post.user.last_name} -"%></p>
+            <% next if !current_user.friend?(post.user) %>
+              <p><%= post.post %></p>
+              <p><%= "- #{post.user.first_name} #{post.user.last_name} -"%></p>
           </div><br>
           <%= button_to 'View All / Comment', new_post_comment_path(post), method: :get %>
           <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
