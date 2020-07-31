@@ -22,7 +22,7 @@
           <ul>
           <% if signed_in? %>
             <li><%= link_to "Friends", friendships_path %></li>
-            <li><%= link_to "#{current_user.first_name}", user_path(current_user) %>
+            <li><%= link_to "#{current_user.first_name}", user_path(current_user), method: :get %>
             <% if current_user.friend_requests.count > 0 %>
             <li><%=link_to "#{current_user.friend_requests.count} Friend Requests", friendships_path, method: :get %></li>
             <% end %>

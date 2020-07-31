@@ -4,10 +4,9 @@
   <div class="user">
     <p>
       <%= image_tag user_avatar(user, 30), class: "rounded-circle" %>
-      <%= user.first_name %>
-      <%= user.last_name %>
+      <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), method: :get %>
       <% if !current_user.friend?(user) %>
-        <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: :post %>
+        <%= link_to "| Add Friend", friendships_path(friend_id: user.id), method: :post %>
       <% end %><br/>
     </p>
   </div>
