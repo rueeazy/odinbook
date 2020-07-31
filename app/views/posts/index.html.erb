@@ -3,7 +3,7 @@
 <h1>Community Posts</h1>
 
 <div>
-<%= image_tag user_avatar(current_user, 100), class: "rounded-circle" %>
+<%= image_tag url_for(user_avatar(current_user, 100)), class: "rounded-circle" %>
 <p>
   <%= "What's on your mind #{current_user.first_name}?"%><br>
 </p>

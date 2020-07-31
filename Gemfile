@@ -27,6 +27,7 @@ gem 'bulma-rails', '~> 0.0.4.1'
 #gravatar
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'image_processing'
+gem 'omniauth-facebook'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
