@@ -2,7 +2,7 @@ module ApplicationHelper
 
     def user_avatar(user, size=40)
         if user.image?
-            user.avatar = user.image
+            user.image
         elsif user.avatar.attached?
             user.avatar.variant(resize: "#{size}x#{size}!")
         else
@@ -11,3 +11,4 @@ module ApplicationHelper
     end
     
 end
+
