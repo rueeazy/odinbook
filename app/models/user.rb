@@ -1,7 +1,5 @@
 class User < ApplicationRecord
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   
@@ -37,9 +35,6 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friends_posts
-
-  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
