@@ -2,6 +2,8 @@
 
 This project is part of The Odin Project's Full Stack Ruby on Rails Curriculum. [https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project]
 
+The final project can be viewed here [https://top-odinbook.herokuapp.com/u/sign_in]
+
 The project will serve to showcase and practice understanding of 
 - building new rails applications
 - modelling data
