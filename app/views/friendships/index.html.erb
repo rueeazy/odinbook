@@ -1,23 +1,75 @@
-<h1>Friends</h1>
-<% if current_user.friend_requests.count > 0 %>
-    <h4>Friend Requests</h4>
-    <% current_user.friend_requests.each do |request| %>
-        <%= "#{request.first_name} #{request.last_name}"%>
-        <%= button_to "Accept", friendship_path(request), method: :patch%><br>
-    <% end %>
-<% end %>
+<div class="container-fluid gedf-wrapper">
+  <div class="row">
+  <!--- \\\\\\\Left Profile Info-->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <%= image_tag url_for(user_avatar(current_user, 100)), class: "rounded-circle" %>
+                <div class="h5"><%= current_user.first_name%><%=current_user.last_name%></div>
+                <div class="d-flex justify-content-between">
+                <%= button_to 'New Post', new_post_path, method: :get, class: "btn btn-primary" %>
+                <%= button_to 'Find Friends', users_path, method: :get, class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--- \\\\\\\Left Profile Info-->
 
-<h4>Friends</h4>
-<% current_user.friends.each do |friend| %>
-  <div class="user">
-    <p>
-      <%= image_tag user_avatar(friend, 20), class: "rounded-circle" %>
-      <%= friend.first_name %>
-      <%= friend.last_name %>
-      <%= link_to "| View Profile", user_path(friend), method: :get %>
-    </p>
+  <!--- \\\\\\\Middle Container-->
+    <div class="col-md-6 gedf-main">
+      <% current_user.friend_requests.each do |request| %>
+        <div class="card mb-3 p-3">
+          <div class="row">
+            <div class="col-md-2 col-sm-2">
+              <%= image_tag user_avatar(request, 80), class: "rounded-circle" %>
+            </div>
+            <div class="col-md-7 col-sm-7">
+              <h5><a href="<%=user_path(request)%>" class="profile-link"><%=request.first_name%> <%=request.last_name%></a></h5>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <%= button_to "Accept", friendship_path(request), method: :patch, class: "btn btn-primary float-right" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
+      <% current_user.friends.each do |friend| %>
+        <div class="card mb-3 p-3">
+          <div class="row">
+            <div class="col-md-2 col-sm-2">
+              <%= image_tag user_avatar(friend, 80), class: "rounded-circle" %>
+            </div>
+            <div class="col-md-7 col-sm-7">
+              <h5><a href="<%=user_path(friend)%>" class="profile-link"><%=friend.first_name%> <%=friend.last_name%></a></h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!--- \\\\\\\End Middle Container-->
+
+    <!--- \\\\\\\Side Posts Section-->
+    <div class="col-md-3">
+      <div class="card gedf-card">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+          </div>
+      </div>
+      <div class="card gedf-card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <% end %>
-
-  <%= link_to "Find Friends |", users_path, method: :get %>
-  <%= link_to 'Back', posts_path %>
+</div>

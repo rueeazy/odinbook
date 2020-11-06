@@ -3,6 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
+#custom gems
+gem 'gravatar_image_tag', '~> 1.2'
+gem 'image_processing'
+gem 'omniauth-facebook'
+gem "letter_opener", :group => :development
+gem "figaro"
+gem 'sendgrid-ruby'
+gem 'simple_form'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record
@@ -25,12 +34,6 @@ gem 'devise'
 gem 'bulma-rails', '~> 0.0.4.1'
 # Use Active Model has_secure_password
 #gravatar
-gem 'gravatar_image_tag', '~> 1.2'
-gem 'image_processing'
-gem 'omniauth-facebook'
-gem "letter_opener", :group => :development
-gem "figaro"
-gem 'sendgrid-ruby'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant

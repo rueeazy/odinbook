@@ -1,16 +1,109 @@
-<h1>New Comment</h1>
+<div class="container-fluid gedf-wrapper">
+  <div class="row">
+  <!--- \\\\\\\Left Profile Info-->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <%= image_tag url_for(user_avatar(current_user, 100)), class: "rounded-circle" %>
+                <div class="h5"><%= current_user.first_name%><%=current_user.last_name%></div>
+                <%= button_to 'New Post', new_post_path, method: :get, class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+  <!--- \\\\\\\Left Profile Info-->
 
-<div class="post">
-    <p><%= @post.post %></p>
-    <p><%= "- #{@post.user.first_name} #{@post.user.last_name} -"%></p>
-    <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes |'%>
-    <%= @post.comments.count %> <%= (@post.comments.count) == 1 ? 'Comment' : 'Comments'%></p>
+  <!--- \\\\\\\Middle Container-->
+    <div class="col-md-6 gedf-main">
+    <!-- Individual Post Card /////-->
+      <div class="card gedf-card mb-3">
+          <div class="card-header">
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <div class="mr-2">
+                          <%= image_tag user_avatar(@post.user, 30), class: "rounded-circle" %>
+                      </div>
+                      <div class="ml-2">
+                          <div class="h5 m-0"><%= link_to "#{@post.user.first_name}", user_path(@post.user), method: :get%></div>
+                          <div class="h7 text-muted"><%=@post.user.first_name%> <%=@post.user.last_name%></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card-body">
+              <div class="text-muted h7 mb-2"> <i class="far fa-clock"></i> 10 min ago</div>
+              <p class="card-text">
+                <%= @post.post %>
+              </p>
+              <a class="card-link" href="#">
+                  <p>
+                  <%=@post.likes.count %> <%=(@post.likes.count) == 1 ? 'Like' : 'Likes'%>
+                  <%=@post.comments.count%> <%=(@post.comments.count) == 1 ? 'Comment' : 'Comments'%>
+                  </p>
+              </a>
+          </div>
+          <div class="card-footer" style="color: #007BFF">
+              <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+              <% if pre_like %>
+                <i class="fas fa-heart"></i> <%= link_to 'Unlike', post_like_path(@post, pre_like), method: :delete, class: "card-link" %>
+              <% else %>
+                <i class="far fa-heart"></i> <%= link_to 'Like', post_likes_path(@post), method: :post, class: "card-link" %>
+              <% end %>
+              <a href="<%=new_post_comment_path(@post)%>" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+              <a href="#" class="card-link"><i class="fas fa-share"></i> Share</a>
+              <% if @post.user_id == current_user.id %>
+                <br></br>
+                <%= link_to 'Edit', edit_post_path(@post), class: "card-link text-muted"%>
+                <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link text-danger" %>
+              <% end %>
+          </div>
+      </div>
 
-    <% @post.posted_feedback.each do |comment| %>
-        <p class="comments"><%= comment %></p>
-    <% end %>
-</div><br>
+      <!--Form-->
+      <div class="mb-5">
+        <%= render 'form', comment: @comment %>
+      </div>
+      <!--Form-->
 
-<%= render 'form', comment: @comment %>
+      <% @post.comments.each do |comment| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-text">
+              <%= comment.comment %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a class="card-link" href="<%=user_path(comment.user.id)%>">
+              <p><%=comment.user.first_name%> <%=comment.user.last_name%></p>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    <!--- \\\\\\\End Individual Post Card-->
+    </div>
+    <!--- \\\\\\\End Middle Container-->
 
-<%= link_to 'Back', posts_path, method: :get %>
+    <!--- \\\\\\\Side Posts Section-->
+    <div class="col-md-3">
+      <div class="card gedf-card">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+          </div>
+      </div>
+      <div class="card gedf-card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

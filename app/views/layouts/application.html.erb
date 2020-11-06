@@ -1,44 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "OdinBook" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "OdinBook" %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-       <header class='clearfix'>
-        <div class="left-nav">
-          <ul>
-            <li><%= link_to "Odinbook", posts_path %></li>
-          </ul>
-        </div>
-        <div class="right-nav">
-          <ul>
-          <% if signed_in? %>
-            <li><%= link_to "Friends", friendships_path %></li>
-            <li><%= link_to "#{current_user.first_name}", user_path(current_user), method: :get %>
-            <% if current_user.friend_requests.count > 0 %>
-            <li><%=link_to "#{current_user.friend_requests.count} Friend Requests", friendships_path, method: :get %></li>
-            <% end %>
-            <li><%= image_tag user_avatar(current_user, 30), class: "rounded-circle" %>
-          <% end %>
-          </ul>
-        </div>
-</header>
-
-    <div class='content'>
+      <%= render 'layouts/navbar' %>
+      <%= render 'layouts/alerts' %>
       <%= yield %>
-
-      <% if signed_in? %>
-      <p><%= button_to "Logout", destroy_user_session_path, method: :delete %></p>
-      <% end %>
-    </div>
-
   </body>
 </html>
