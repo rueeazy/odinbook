@@ -2,15 +2,7 @@
   <div class="row">
   <!--- \\\\\\\Left Profile Info-->
     <div class="col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <%= image_tag url_for(user_avatar(current_user, 100)), class: "rounded-circle mb-2" %>
-                <div class="h5"><%= current_user.first_name%> <%=current_user.last_name%></div>
-                <div class="d-flex justify-content-between">
-                <%= button_to 'New Post', new_post_path, method: :get, class: "btn btn-primary" %>
-                </div>
-            </div>
-        </div>
+        <%=render 'layouts/left_column'%>
     </div>
   <!--- \\\\\\\Left Profile Info-->
 
@@ -65,7 +57,7 @@
                 <p class="card-text">
                   <%= post.post %>
                 </p>
-                <a class="card-link" href="#">
+                <a class="card-link" href="<%=new_post_comment_path(post)%>">
                     <p>
                     <%=post.likes.count %> <%=(post.likes.count) == 1 ? 'Like' : 'Likes'%>
                     <%=post.comments.count%> <%=(post.comments.count) == 1 ? 'Comment' : 'Comments'%>
@@ -96,26 +88,6 @@
 
     <!--- \\\\\\\Side Posts Section-->
     <div class="col-md-3">
-      <div class="card gedf-card">
-          <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-          </div>
-      </div>
-      <div class="card gedf-card">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
+        <%=render 'layouts/right_column'%>
     </div>
-  </div>
 </div>

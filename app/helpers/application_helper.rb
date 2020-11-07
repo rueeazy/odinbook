@@ -9,6 +9,9 @@ module ApplicationHelper
             gravatar_image_url(user.email, size: size)
         end
     end
-    
+
+    def latest_post
+        Post.all.last
+    end
 end
 

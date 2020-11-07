@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <%= image_tag url_for(user_avatar(current_user, 100)), class: "rounded-circle mb-2" %>
+        <div class="h5"><%= current_user.first_name%> <%=current_user.last_name%></div>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="h6 text-muted">Friends</div>
+            <div class="d-flex justify-content-between">
+                <div class="h5"><%=current_user.friends.count%></div>
+                <%= button_to users_path, method: :get, class: "btn btn-primary" do %>
+                    <i class="fas fa-users"></i> Find Friends
+                <% end %>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="h6 text-muted">Community Posts</div>
+            <div class="d-flex justify-content-between">
+            <div class="h5"><%=current_user.posts.count%></div>
+            <%= button_to new_post_path, method: :get, class: "btn btn-primary" do %>
+                <i class="fas fa-edit"></i> New Post
+            <% end %>
+            </div>
+        </li>
+    </ul>
+</div>
