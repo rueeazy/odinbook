@@ -92,6 +92,11 @@ img.rounded-circle {
 
 //Forms
 
+.devise-forms {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 .form-buttons {
   text-align: center;
   margin: 0 auto;
@@ -99,9 +104,4 @@ img.rounded-circle {
 
 .form-title {
   text-align: center;
-}
-
-.center-form {
-  max-width: 480px;
-  margin: auto;
 }
