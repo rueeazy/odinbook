@@ -60,20 +60,15 @@
           </div>
       </div>
     <!--- \\\\\\\End Individual Post Card-->
-      <% @post.comments.each do |comment| %>
-        <div class="card mb-3">
-          <div class="card-body">
-            <p class="card-text">
-              <%= comment.comment %>
-            </p>
-          </div>
-          <div class="card-footer">
-            <a class="card-link" href="<%=user_path(comment.user.id)%>">
-              <p><%=comment.user.first_name%> <%=comment.user.last_name%></p>
-            </a>
-          </div>
-        </div>
-      <% end %>
+      <h4 class="">Comments</h4>
+      <ul class="list-group">
+        <% @post.comments.each do |comment| %>
+          <li class="list-group-item">
+            <p><%=comment.comment%></p>
+            <a href="<%=user_path(comment.user)%>"><small><%=comment.user.first_name%> <%=comment.user.last_name%></small></a>
+          </li>
+        <% end %>
+      </ul>
     </div>
     <!--- \\\\\\\End Middle Container-->
 
