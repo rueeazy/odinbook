@@ -33,6 +33,9 @@
             <div class="col-md-7 col-sm-7">
               <h5><a href="<%=user_path(friend)%>" class="profile-link"><%=friend.first_name%> <%=friend.last_name%></a></h5>
             </div>
+            <div class="col-md-3 col-sm-3">
+              <button type="button" class="btn btn-primary float-right" disabled><i class="fas fa-user-friends"></i> Friends</button>
+            </div>
           </div>
         </div>
       <% end %>

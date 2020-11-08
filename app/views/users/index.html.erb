@@ -8,6 +8,7 @@
 
   <!--- \\\\\\\Middle Container-->
     <div class="col-md-6 gedf-main">
+      <h4 class="mb-4">All Users</h4>
       <% @users.each do |user| %>
         <% next if user == current_user %>
         <div class="card mb-3 p-3">
@@ -19,8 +20,18 @@
               <h5><a href="<%=user_path(user)%>" class="profile-link"><%=user.first_name%> <%=user.last_name%></a></h5>
             </div>
             <div class="col-md-3 col-sm-3">
-              <% if !current_user.friend?(user) %>
-                <%= button_to "Add Friend", friendships_path(friend_id: user.id), class: "btn btn-primary float-right", method: :post %>
+              <% if current_user.friend?(user) %>
+                  <button type="button" class="btn btn-primary float-right" disabled><i class="fas fa-user-friends"></i> Friends</button>
+              <% elsif current_user.pending_friends.include?(user) %>
+                  <button type="button" class="btn btn-secondary float-right" disabled><i class="fas fa-hourglass-half"></i> Pending</button>
+              <% elsif current_user.friend_requests.include?(user) %>
+                  <%= button_to friendship_path(user), method: :patch, class: "btn btn-secondary float-right" do %>
+                    <i class="fas fa-user-check"></i> Accept
+                  <% end %>
+              <% else %>
+                  <%= button_to friendships_path(friend_id: user.id), method: :post, class: "btn btn-primary float-right" do %>
+                    <i class="fas fa-user-plus"></i> Add Friend
+                  <% end %>
               <% end %>
             </div>
           </div>

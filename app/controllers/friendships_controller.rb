@@ -4,10 +4,10 @@ class FriendshipsController < ApplicationController
         @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
         if @friendship.save
             flash[:notice] = "Friend Request Sent."
-            redirect_to root_url
+            redirect_to request.referrer
         else
             flash[:notice] = "Unable to send friend request."
-            redirect_to root_url
+            redirect_to request.referrer
         end
     end
 
