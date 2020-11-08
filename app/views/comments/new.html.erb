@@ -24,16 +24,16 @@
               </div>
           </div>
           <div class="card-body">
-              <div class="text-muted h7 mb-2"> <i class="far fa-clock"></i> 10 min ago</div>
-              <p class="card-text">
+              <p class="card-text" style="font-size: 1rem;">
                 <%= @post.post %>
-              </p>
+              </>
               <a class="card-link" href="<%=new_post_comment_path(@post)%>">
                   <p>
                   <%=@post.likes.count %> <%=(@post.likes.count) == 1 ? 'Like' : 'Likes'%>
                   <%=@post.comments.count%> <%=(@post.comments.count) == 1 ? 'Comment' : 'Comments'%>
                   </p>
               </a>
+              <div class="text-muted h7 mb-2"> <i class="far fa-clock"></i> <%= time_ago_in_words(@post.created_at)%></div>
           </div>
           <div class="card-footer" style="color: #007BFF">
               <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
@@ -59,10 +59,12 @@
       <!-- Comments -->
       <h4 class="">Comments</h4>
       <ul class="list-group">
-        <% @post.comments.each do |comment| %>
+        <% @post.comments.reverse.each do |comment| %>
           <li class="list-group-item">
-            <p><%=comment.comment%></p>
-            <a href="<%=user_path(comment.user)%>"><small><%=comment.user.first_name%> <%=comment.user.last_name%></small></a>
+            <p style="font-size:.9rem; margin-bottom: 5px;"><%=comment.comment%></p>
+            <%= image_tag user_avatar(comment.user, 15), class: "rounded-circle" %>
+            <a href="<%=user_path(comment.user)%>"><%=comment.user.first_name%> <%=comment.user.last_name%></a>
+            <div class="text-muted mb-2" style="font-size:10px; margin-top:.5rem;"> <i class="far fa-clock"></i> <%= time_ago_in_words(comment.created_at)%></div>
           </li>
         <% end %>
       </ul>
