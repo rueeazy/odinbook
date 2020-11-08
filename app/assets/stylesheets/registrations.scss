@@ -1,3 +1,49 @@
 // Place all the styles related to the Registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.orange {
+  background-color: #e75348;
+}
+
+.sign-in-page {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.sign-in-container {
+  width: 870px;
+  margin: 0 auto;
+}
+
+.sign-in-content {
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+}
+
+// right side
+.sign-in-form {
+  margin: 0 auto;
+  padding: 3rem 5px 92px 5px;
+  width: 70%;
+}
+
+.slash {
+  border-left: 1px solid lightgrey;
+}
+
+.left-hand-form {
+  margin: 0 auto;
+  padding: 3rem 0rem;
+  text-align: center;
+}
+
+.sign-in-image {
+  padding-left: 1rem;
+
+  img {
+    width: 100%;
+  }
+}
