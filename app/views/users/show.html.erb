@@ -34,6 +34,7 @@
             </div>
         </div>
     <!-- End Profile Card -->
+    <h4 class="mb-4 mt-5"><%=@user.first_name%>'s Feed</h4>
     <!-- Posts -->
       <% @user.posts.each do |post| %>
         <div class="card gedf-card mb-3">
@@ -72,7 +73,7 @@
                   <i class="far fa-heart"></i> <%= link_to 'Like', post_likes_path(post), method: :post, class: "card-link" %>
                 <% end %>
                 <a href="<%=new_post_comment_path(post)%>" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                <a href="<%=post_path(post)%>" class="card-link"><i class="fas fa-share"></i>View</a>
+                <a href="<%=post_path(post)%>" class="card-link">View</a>
                 <% if post.user_id == current_user.id %>
                   <br></br>
                   <%= link_to 'Edit', edit_post_path(post), class: "card-link text-muted"%>

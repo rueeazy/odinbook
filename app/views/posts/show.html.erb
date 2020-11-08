@@ -45,7 +45,6 @@
                 <i class="far fa-heart"></i> <%= link_to 'Like', post_likes_path(@post), method: :post, class: "card-link" %>
               <% end %>
               <a href="<%=new_post_comment_path(@post)%>" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-              <a href="#" class="card-link"><i class="fas fa-share"></i> Share</a>
               <% if @post.user_id == current_user.id %>
                 <br></br>
                 <%= link_to 'Edit', edit_post_path(@post), class: "card-link text-muted"%>
@@ -54,7 +53,7 @@
           </div>
       </div>
     <!--- \\\\\\\End Individual Post Card-->
-      <h4 class="">Comments</h4>
+      <h4 class="mb-4 mt-5">Comments</h4>
       <ul class="list-group">
         <% @post.comments.each do |comment| %>
           <li class="list-group-item">

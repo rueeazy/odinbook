@@ -1,5 +1,6 @@
 <%= simple_form_for @post do |f| %>
-  <%= f.input :post, label: false, input_html: {rows: "3", placeholder: "What's on your mind?"} %>
+  <%= f.error_notification %>
+  <%= f.input :post, required: true, label: false, input_html: {rows: "3", placeholder: "What's on your mind?"} %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.button :submit, "Share", class: "btn-primary" %>
 <% end %>

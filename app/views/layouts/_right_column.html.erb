@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <%= image_tag url_for(user_avatar(latest_post.user, 45)), class: "rounded-circle mb-2" %>
-        <h6 class="card-subtitle mb-2 text-muted"><%=latest_post.user.first_name%><%=latest_post.user.last_name%></h6>
+        <div class="h6 mb-2"><%= link_to "#{latest_post.user.first_name} #{latest_post.user.last_name}", user_path(latest_post.user), method: :get%></div>
         <p class="card-text"><%=latest_post.post%></p>
         <% pre_like = latest_post.likes.find { |like| like.user_id == current_user.id} %>
         <% if pre_like %>
@@ -19,24 +19,26 @@
         <a href="<%=new_post_comment_path(latest_post)%>" class="card-link"><%=latest_post.comments.count %> <i class="fa fa-comment"></i></a>
     </div>
 </div>
-<div class="card gedf-card">
-    <div class="card-header">
-        <h5 class="card-title mt-2">My Latest Post</h5>
+<% if current_user.posts.count > 0 %>
+    <div class="card gedf-card">
+        <div class="card-header">
+            <h5 class="card-title mt-2">My Latest Post</h5>
+        </div>
+        <div class="card-body">
+            <%= image_tag url_for(user_avatar(current_user, 45)), class: "rounded-circle mb-2" %>
+            <h6 class="card-subtitle mb-2 text-muted"><%=current_user.first_name%> <%=current_user.last_name%></h6>
+            <p class="card-text"><%=current_user.posts.last.post%></p>
+            <% pre_like = current_user.posts.last.likes.find { |like| like.user_id == current_user.id} %>
+            <% if pre_like %>
+                <%= link_to post_like_path(current_user.posts.last, pre_like), method: :delete, class: "card-link" do %>
+                    <%=current_user.posts.last.likes.count %> <i class="fas fa-heart text-primary"></i>
+                <%end%>
+            <% else %>
+                <%= link_to post_likes_path(current_user.posts.last), method: :post, class: "card-link" do %>
+                    <%=current_user.posts.last.likes.count %> <i class="far fa-heart text-primary"></i>
+                <%end%>
+            <% end %>
+            <a href="<%=new_post_comment_path(current_user.posts.last)%>" class="card-link"><%=current_user.posts.last.comments.count %> <i class="fa fa-comment"></i></a>
+        </div>
     </div>
-    <div class="card-body">
-        <%= image_tag url_for(user_avatar(current_user, 45)), class: "rounded-circle mb-2" %>
-        <h6 class="card-subtitle mb-2 text-muted"><%=current_user.first_name%><%=current_user.last_name%></h6>
-        <p class="card-text"><%=current_user.posts.last.post%></p>
-        <% pre_like = current_user.posts.last.likes.find { |like| like.user_id == current_user.id} %>
-        <% if pre_like %>
-            <%= link_to post_like_path(current_user.posts.last, pre_like), method: :delete, class: "card-link" do %>
-                <%=current_user.posts.last.likes.count %> <i class="fas fa-heart text-primary"></i>
-            <%end%>
-        <% else %>
-            <%= link_to post_likes_path(current_user.posts.last), method: :post, class: "card-link" do %>
-                <%=current_user.posts.last.likes.count %> <i class="far fa-heart text-primary"></i>
-            <%end%>
-        <% end %>
-        <a href="<%=new_post_comment_path(current_user.posts.last)%>" class="card-link"><%=current_user.posts.last.comments.count %> <i class="fa fa-comment"></i></a>
-    </div>
-</div>
+<% end %>
