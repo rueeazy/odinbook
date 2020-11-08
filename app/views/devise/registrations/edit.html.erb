@@ -7,8 +7,10 @@
   <div class="form-inputs">
     <%= image_tag user_avatar(resource, 100), class: "rounded-circle" %>
     <%= f.file_field :avatar %><br>
+
+    <%= f.input :bio %>
     
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
