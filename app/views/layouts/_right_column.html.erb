@@ -1,3 +1,4 @@
+<% if @posts.count > 0 %>
 <div class="card gedf-card mb-5">
     <div class="card-header">
         <h5 class="card-title mt-2">Newest Post</h5>
@@ -19,6 +20,7 @@
         <a href="<%=new_post_comment_path(latest_post)%>" class="card-link"><%=latest_post.comments.count %> <i class="fa fa-comment"></i></a>
     </div>
 </div>
+<% end %>
 <% if current_user.posts.count > 0 %>
     <div class="card gedf-card">
         <div class="card-header">
