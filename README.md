@@ -17,9 +17,16 @@ This project is part of The Odin Project's Full Stack Ruby on Rails Curriculum. 
 
 ## Screenshots
 
+Creating Posts
 ![](create-post.gif)
+
+Commenting on Posts
 ![](post-comment.gif)
+
+Liking Posts
 ![](like-post.gif)
+
+Adding Friends
 ![](add-friend.gif)
 
 ## Tech/framework used
