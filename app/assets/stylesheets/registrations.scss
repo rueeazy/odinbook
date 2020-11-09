@@ -52,3 +52,51 @@
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 991px) {
+  .sign-in-container {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .left-hand-form {
+    padding-top: 3rem;
+    padding-bottom: 0rem;
+  }
+
+  .sign-in-description {
+    margin-bottom: 0px;
+  }
+
+  .sign-in-form {
+    width: 85%;
+    padding: 30px 0;
+  }
+
+  .sign-in-image {
+    img {
+      display: none;
+    }
+  }
+
+  .slash {
+    border-left: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sign-in-page {
+    padding-top: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .sign-in-form {
+    padding-top: 0;
+    padding-bottom: 30px;
+  }
+
+  .sign-in-description {
+    padding: 0 1rem;
+    margin: 10px 10px;
+  }
+}
