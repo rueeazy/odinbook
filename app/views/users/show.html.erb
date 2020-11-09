@@ -15,7 +15,19 @@
                 <%= image_tag user_avatar(@user, 80), class: "rounded-circle" %>
             </div>
             <div class="col-md-7 col-sm-7">
-                <h5><a href="<%=user_path(@user)%>" class="profile-link"><%=@user.first_name%> <%=@user.last_name%></a></h5>
+                <h4><a href="<%=user_path(@user)%>" class="profile-link"><%=@user.first_name%> <%=@user.last_name%></a></h4>
+                <p style="font-size: 1rem;"><%=@user.bio%></p>
+                <div class="d-flex">
+                    <div class="d-flex align-items-center flex-column mr-3">
+                        <h7 class="text-muted">Friends</h7>
+                        <p><%=@user.friends.count%></p>
+                    </div>
+                    <div class="d-flex align-items-center flex-column">
+                        <h7 class="text-muted">Posts</h7>
+                        <p><%=@user.posts.count%></p>
+                    </div>
+                </div>
+                <h7 class="text-muted">Email</h7>
                 <p><%= @user.email%></p>
             </div>
             <div class="col-md-3 col-sm-3">

@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="<%= !user_signed_in? ? 'orange' : '' %>">
+  <body class="<%= !user_signed_in? ? 'orange' : 'plain' %>">
       <% if user_signed_in? %>
         <%= render 'layouts/navbar' %>
       <% end %>
