@@ -18,6 +18,7 @@
             </div>
             <div class="col-md-7 col-sm-7">
               <h5><a href="<%=user_path(user)%>" class="profile-link"><%=user.first_name%> <%=user.last_name%></a></h5>
+              <p style="font-size: 1rem;"><%=user.bio%></p>
             </div>
             <div class="col-md-3 col-sm-3">
               <% if current_user.friend?(user) %>
