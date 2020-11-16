@@ -11,6 +11,7 @@ gem "letter_opener", :group => :development
 gem "figaro"
 gem 'sendgrid-ruby'
 gem 'simple_form'
+gem "aws-sdk-s3", require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
