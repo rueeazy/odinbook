@@ -14,7 +14,11 @@
       <% if user_signed_in? %>
         <%= render 'layouts/navbar' %>
       <% end %>
-      <%= render 'layouts/alerts' %>
+      <br/>
+      <% if notice || alert %>
+        <%= render 'layouts/alerts' %>
+      <% end %>
+      <br/>
       <%= yield %>
   </body>
 </html>
